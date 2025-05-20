@@ -1,0 +1,81 @@
+import styled from 'styled-components';
+import {useState} from 'react';
+import processText from '../utils/processText';
+import Input from './Input';
+import Button from './Button';
+import { ChatWrapper, AiChat, UserChat } from './ChatComponents';
+
+const Container = styled.div`
+    width: 45vw;
+    height: 90%;
+    background-color: white;
+    border-radius: 20px;
+    position: relative;
+    padding: 10px;
+    margin: 0 auto;
+`;
+
+const Search = styled.div`
+    text-align: center;
+    // border: 1px solid red;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+`;
+
+const ChatArea = styled.div`
+    height: 70vh;
+    overflow: scroll;
+    overflow-x: hidden;
+`;
+
+function Content(){
+    const [value, setValue] = useState<string>('');
+    const [messages, setMessages] = useState<string[]>([]);
+    const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        const {
+            currentTarget: {value},
+        } = event;
+        setValue(value);
+    }
+    const onSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if(value){
+            setMessages(prev => [...prev, value]);
+            const message = await processText(value)
+            console.log(message);
+            setMessages(prev => [...prev, message]);
+            setValue('');
+        }
+        else{
+            alert('질문을 입력하세요.');
+        }
+    }
+    return (
+        <Container>
+            <ChatArea>
+                {messages.map((msg, idx) => {
+                    return (
+                        <ChatWrapper key={idx} isUser={idx % 2 === 0}>
+                            {idx % 2 === 0 ? (
+                            <UserChat>{msg}</UserChat>
+                            ) : (
+                            <AiChat>{msg}</AiChat>
+                            )}
+                        </ChatWrapper>
+                    )
+                })}
+            </ChatArea>
+            <form onSubmit={onSubmit}>
+                <Search>
+                    <Input type="text" value={value} onChange={onChange}/>
+                    <Button>&uarr;</Button>
+                </Search>
+            </form>
+        </Container>
+    );
+}
+
+export default Content;

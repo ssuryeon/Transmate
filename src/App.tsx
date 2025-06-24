@@ -59,8 +59,8 @@ li {
 }
 
 p {
-  margin: 0.8em 0;
-  line-height: 1.2;
+  margin: 0.5em 0;
+  line-height: 1.5;
 }
 
 strong {

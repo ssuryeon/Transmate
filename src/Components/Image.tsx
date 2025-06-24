@@ -5,7 +5,7 @@ import { FileUploaderRegular, OutputCollectionState, OutputCollectionStatus } fr
 
 const ImageContent = styled.div`
   width: 45vw;
-  height: 90%;
+  height: 459px;
   background-color: white;
   border-radius: 20px;
   padding: 15px;
@@ -19,6 +19,10 @@ const ImageContent = styled.div`
     object-fit: contain;
     display: block;
   }
+  @media(max-width: 768px){
+    width: 90vw;
+    margin-bottom: 15px;
+    }
 `;
 
 function Image(){

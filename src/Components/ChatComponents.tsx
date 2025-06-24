@@ -18,7 +18,7 @@ const AiChat = styled.div`
 
 const UserChat = styled.div`
     background-color: #ecf0f1;
-    padding: 10px 15px;
+    padding: 0 15px;
     border-radius: 20px;
     max-width: 90%;
 `;

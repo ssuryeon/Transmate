@@ -10,31 +10,14 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 400;
   font-style: normal;
 }
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
+
 body {
   font-family: 'Pretendard-Regular', sans-serif;
   background-color: #ecf0f1;
@@ -44,46 +27,63 @@ body {
   align-items: center;
   height: 100vh;
 }
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+
 * {
   box-sizing: border-box;
 }
+
 button:active, button:focus {
   outline: none;
 }
-html {
-  height: 100%;
-}
+
 img {
   margin-top: 10px;
 }
+
+blockquote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 4px solid #ccc;
+  color: #555;
+  background: #f9f9f9;
+}
+
+ul, ol {
+  margin-left: 1.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+p {
+  margin: 0.8em 0;
+  line-height: 1.2;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
 `;
+
 
 const FONTCOLOR = '#34495e';
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height: calc(100vh - 20px);
+  height: 100%;
   flex-wrap: wrap;
   padding: 10px;
   margin-top: 0;
+  // border: 1px solid blue;
 `;
 
 const H1 = styled.h1`
@@ -93,8 +93,24 @@ const H1 = styled.h1`
   text-align: center;
   display: block;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   margin-top: 0;
+  @media(max-width: 768px){
+    font-size: 2rem;
+  }
+`;
+
+const InnerContainer = styled.div`
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  // border: 1px solid red;
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
 `;
 
 function App() {
@@ -103,8 +119,10 @@ function App() {
       <GlobalStyle />
       <Container>
         <H1>Transmate</H1>
-        <Image />
-        <Content />
+        <InnerContainer>
+          <Image />
+          <Content />
+        </InnerContainer>
       </Container>
     </>
   );

@@ -4,15 +4,20 @@ import processText from '../utils/processText';
 import Input from './Input';
 import Button from './Button';
 import { ChatWrapper, AiChat, UserChat } from './ChatComponents';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const Container = styled.div`
     width: 45vw;
-    height: 90%;
+    height: 459px;
     background-color: white;
     border-radius: 20px;
     position: relative;
     padding: 10px;
-    margin: 0 auto;
+    @media(max-width: 768px){
+        width: 90vw;
+        margin-bottom: 15px;
+    }
 `;
 
 const Search = styled.div`
@@ -26,9 +31,10 @@ const Search = styled.div`
 `;
 
 const ChatArea = styled.div`
-    height: 70vh;
+    height: 90%;
     overflow: scroll;
     overflow-x: hidden;
+    // border: 1px solid red;
 `;
 
 function Content(){
@@ -60,9 +66,9 @@ function Content(){
                     return (
                         <ChatWrapper key={idx} isUser={idx % 2 === 0}>
                             {idx % 2 === 0 ? (
-                            <UserChat>{msg}</UserChat>
+                            <UserChat><ReactMarkdown remarkPlugins={[remarkGfm]}>{msg}</ReactMarkdown></UserChat>
                             ) : (
-                            <AiChat>{msg}</AiChat>
+                            <AiChat><ReactMarkdown remarkPlugins={[remarkGfm]}>{msg}</ReactMarkdown></AiChat>
                             )}
                         </ChatWrapper>
                     )

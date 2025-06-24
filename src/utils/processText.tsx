@@ -9,10 +9,11 @@ async function processText(value:string){
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            model: 'anthropic/claude-3.5-haiku',
+            model: 'deepseek/deepseek-r1-0528:free',
             messages: [
                 { role: 'system', content: data },
-                { role: 'system', content: '당신은 한국어로만 답변하는 친절하고 정확한 한국어 비서입니다. 모든 답변은 오직 **한글만** 사용하세요. 한자나 영어는 사용하지 마세요. 한국어의 자연스러운 표현으로 대답하세요.' },
+                { role: 'system', content: '당신은 다른 언어로 쓰인 문장을 **한글**로 충실히 번역하는 데 초점을 맞춘 한국어 비서입니다. 주어진 문장은 이미지에서 추출한 문장으로, 이를 활용하여 대답하세요.' },
+                { role: 'system', content: '당신은 교육 목적으로 활용됩니다. 질문에 대한 답변과 함께 도움이 되는 추가적인 정보를 제공할 수 있습니다.'},
                 { role: 'user', content: value }
             ]
         })

@@ -5,12 +5,13 @@ import { FileUploaderRegular, OutputCollectionState, OutputCollectionStatus } fr
 
 const ImageContent = styled.div`
   width: 45vw;
-  height: 459px;
+  height: 80vh;
   background-color: white;
   border-radius: 20px;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   img {
     max-width: 100%;
     max-height: calc(100% - 80px);

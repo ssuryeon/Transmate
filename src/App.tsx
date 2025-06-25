@@ -88,7 +88,7 @@ const Container = styled.div`
 
 const H1 = styled.h1`
   color: ${FONTCOLOR};
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
   display: block;
@@ -102,11 +102,12 @@ const H1 = styled.h1`
 
 const InnerContainer = styled.div`
   width: 100%;
-  height: 90%;
+  height: auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
+  margin: auto;
   // border: 1px solid red;
   @media(max-width: 768px){
     flex-direction: column;

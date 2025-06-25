@@ -9,10 +9,11 @@ import remarkGfm from 'remark-gfm';
 
 const Container = styled.div`
     width: 45vw;
-    height: 459px;
+    height: 80vh;
     background-color: white;
     border-radius: 20px;
     position: relative;
+    margin: 0 auto;
     padding: 10px;
     @media(max-width: 768px){
         width: 90vw;

@@ -24,4 +24,4 @@
 - **LLM API**: Deepseek API (질문/응답 처리)
 
 # 시연 화면
-![performance](public/React_App_-_Chrome_2025-06-25_12-12-28_(online-video-cutter.com)_(1).gif)
+![performance](https://github.com/user-attachments/assets/4d091439-02b9-4964-bd4c-25f68c87663f)
